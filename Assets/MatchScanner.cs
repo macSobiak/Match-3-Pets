@@ -5,9 +5,12 @@ using UnityEngine;
 public class MatchScanner : MonoBehaviour
 {
     public GameBoard BoardToScan;
+    public BlocksRuntimeSet BlocksMatched;
+    public GameEvent MatchFound;
+    public GameEvent NoMatchFound;
     public void FindMatches()
     {
-        List<BlockElement> matchedBlocksList = new List<BlockElement>();
+        //List<BlockElement> matchedBlocksList = new List<BlockElement>();
 
         for (int col = 0; col < BoardToScan.HorizontalSize.value; col++)
         {
@@ -18,29 +21,32 @@ public class MatchScanner : MonoBehaviour
                 var verScanRes = ScanVertical(col, row, currentBlockTypes);
                 if (verScanRes.Count >= 2)
                 {
-                    matchedBlocksList.AddRange(verScanRes);
-                    matchedBlocksList.Add(BoardToScan.Grid[col, row]);
+                    BlocksMatched.Items.AddRange(verScanRes);
+                    BlocksMatched.Items.Add(BoardToScan.Grid[col, row]);
                 }
 
                 var horScanRes = ScanHorizontal(col, row, currentBlockTypes);
                 if (horScanRes.Count >= 2)
-                { 
-                    matchedBlocksList.AddRange(horScanRes);
-                    matchedBlocksList.Add(BoardToScan.Grid[col, row]);
+                {
+                    BlocksMatched.Items.AddRange(horScanRes);
+                    BlocksMatched.Items.Add(BoardToScan.Grid[col, row]);
                 }
 
 
             }
         }
-        if (matchedBlocksList.Count > 0)
+        if (BlocksMatched.Items.Count > 0)
         {
 
-            foreach (var match in matchedBlocksList)
-            {
-                match.GetComponent<SpriteRenderer>().color = Color.grey;
-                //Destroy(match.gameObject);
-            }
+            //foreach (var match in BlocksMatched.Items)
+            //{
+            //    //match.GetComponent<SpriteRenderer>().color = Color.grey;
+            //    //Destroy(match.gameObject);
+            //}
+            MatchFound.Raise();
         }
+        else
+            NoMatchFound.Raise();
     }
 
     private List<BlockElement> ScanVertical(int col, int row, List<Block> currentBlockTypes)

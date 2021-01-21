@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlockHighlighter : MonoBehaviour
 {
-    public BlocksRuntimeSet SelectedBlocksToHighlit;
+    public BlocksRuntimeSet SelectedBlocksToHighlight;
     public GameEvent OnBlockReadyToSwap;
 
     // Start is called before the first frame update
@@ -15,20 +15,20 @@ public class BlockHighlighter : MonoBehaviour
         {
             block.IsSelected = !block.IsSelected;
 
-            if (SelectedBlocksToHighlit.Items.Count >= 2)
+            if (SelectedBlocksToHighlight.Items.Count >= 2)
             {
                 DeselectAndClearAll();
             }
-            if (SelectedBlocksToHighlit.Items.Contains(block))
+            if (SelectedBlocksToHighlight.Items.Contains(block))
             {
                 block.DeselectBlock();
-                SelectedBlocksToHighlit.Remove(block);
+                SelectedBlocksToHighlight.Remove(block);
             }
             else
             {
                 CheckIfAdjacentAndSelect(block);
             }
-            if (SelectedBlocksToHighlit.Items.Count >= 2)
+            if (SelectedBlocksToHighlight.Items.Count >= 2)
             {
                 OnBlockReadyToSwap.Raise();
             }
@@ -38,19 +38,19 @@ public class BlockHighlighter : MonoBehaviour
 
     public void DeselectAndClearAll()
     {
-        foreach (var blockElement in SelectedBlocksToHighlit.Items)
+        foreach (var blockElement in SelectedBlocksToHighlight.Items)
             blockElement.DeselectBlock();
-        SelectedBlocksToHighlit.Items.Clear();
+        SelectedBlocksToHighlight.Items.Clear();
     }
 
     private void CheckIfAdjacentAndSelect(BlockElement block)
     {
-        if (SelectedBlocksToHighlit.Items.Count == 0
-            || (Mathf.Abs(SelectedBlocksToHighlit.Items[0].Column - block.Column) == 1 && SelectedBlocksToHighlit.Items[0].Row == block.Row)
-            || (Mathf.Abs(SelectedBlocksToHighlit.Items[0].Row - block.Row) == 1 && SelectedBlocksToHighlit.Items[0].Column == block.Column))
+        if (SelectedBlocksToHighlight.Items.Count == 0
+            || (Mathf.Abs(SelectedBlocksToHighlight.Items[0].Column - block.Column) == 1 && SelectedBlocksToHighlight.Items[0].Row == block.Row)
+            || (Mathf.Abs(SelectedBlocksToHighlight.Items[0].Row - block.Row) == 1 && SelectedBlocksToHighlight.Items[0].Column == block.Column))
         {
             block.SelectBlock();
-            SelectedBlocksToHighlit.Add(block);
+            SelectedBlocksToHighlight.Add(block);
         }
         else
             DeselectAndClearAll();
