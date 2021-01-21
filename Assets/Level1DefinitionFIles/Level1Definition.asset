@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52df35f7e0ce5bc49b579a9be5d615a9, type: 3}
+  m_Name: Level1Definition
+  m_EditorClassIdentifier: 
+  BlockTypesToSpawn:
+  - {fileID: 11400000, guid: 0ab0fdd749976c743b4ec9e7a83d05fa, type: 2}
+  - {fileID: 11400000, guid: a72413fd709142443a5fa3d39141a3a6, type: 2}
+  - {fileID: 11400000, guid: 831cf835b3e13c54da355c1ce861d495, type: 2}
+  - {fileID: 11400000, guid: c2962357f11851d42baa9c31398e6f1a, type: 2}
+  - {fileID: 11400000, guid: 36f5ca7360a243b4797656eeee038c9d, type: 2}
+  - {fileID: 11400000, guid: 95d342a45c99864439763153926ae228, type: 2}
+  GameBoard: {fileID: 11400000, guid: d550591e928de8341b4404fc211cf7ba, type: 2}
