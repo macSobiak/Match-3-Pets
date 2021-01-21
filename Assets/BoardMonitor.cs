@@ -9,7 +9,10 @@ public class BoardMonitor : MonoBehaviour
     public BlocksRuntimeSet SelectedBlocks;
     public BlocksRuntimeSet BlocksToDestroy;
     public GameEvent OnCheckMatches;
-    public GameEvent OnBlockSwapEnded;
+    public GameEvent OnBoardRefresh;
+    public GameEvent OnMovementEnded;
+    public GameEvent OnMovementStarted;
+
     public GameBoard GameBoardToUpdate;
     // Start is called before the first frame update
     void Start()
@@ -19,7 +22,7 @@ public class BoardMonitor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SwapSelectedBlocks()
@@ -34,12 +37,13 @@ public class BoardMonitor : MonoBehaviour
     {
         if (SelectedBlocks.Items.Count >= 2)
         {
-            SwapBlocks(SelectedBlocks.Items[0], SelectedBlocks.Items[1], OnBlockSwapEnded);
+            SwapBlocks(SelectedBlocks.Items[0], SelectedBlocks.Items[1], OnMovementEnded);
         }
     }
 
     private void SwapBlocks(BlockElement elementsToSwap1, BlockElement elementsToSwap2, GameEvent EndAnimationEvent)
     {
+        OnMovementStarted.Raise();
         float x1 = elementsToSwap1.transform.position.x;
         float y1 = elementsToSwap1.transform.position.y;
         int col1 = elementsToSwap1.Column;
@@ -72,31 +76,36 @@ public class BoardMonitor : MonoBehaviour
         //LeanTween.moveX(elementsToMove, x1, 0.5f);
         //LeanTween.moveY(elementsToMove, y1, 0.5f);
     }
-    public void DestroyBlocksAndFillEmptyPlaces()
-    {
-        DestroyBlocks();
-        FillEmptyPlaces();
-    }
-    private void DestroyBlocks()
+    public void DestroyBlocks()
     {
         for (int i = BlocksToDestroy.Items.Count - 1; i >= 0; i--)
         {
+            GameBoardToUpdate.Grid[BlocksToDestroy.Items[i].Column, BlocksToDestroy.Items[i].Row] = null;
             Destroy(BlocksToDestroy.Items[i].gameObject);
             BlocksToDestroy.Remove(BlocksToDestroy.Items[i]);
         }
-        OnBlockSwapEnded.Raise();
+        OnBoardRefresh.Raise();
     }
-    public void FillEmptyPlaces()
+    public void DropBlocksToProperPlace()
     {
-
+        OnMovementStarted.Raise();
         for (int col = 0; col < GameBoardToUpdate.HorizontalSize.value; col++)
         {
-            for (int row = GameBoardToUpdate.VerticalSize.value - 1; row >= 0; row--)
+            for (int row = 0; row < GameBoardToUpdate.VerticalSize.value; row++)
             {
-                if (GameBoardToUpdate.Grid[col, row] == null)
-                    print("WTFFFFFFFFF");
-
+                var block = GameBoardToUpdate.Grid[col, row];
+                new Vector3(block.Column - (GameBoardToUpdate.HorizontalSize.value / 2f) + 0.5f, -block.Row + (GameBoardToUpdate.VerticalSize.value / 2f) - 0.5f, 0f);
+                if(col == GameBoardToUpdate.HorizontalSize.value-1 && row == GameBoardToUpdate.VerticalSize.value-1)
+                    LeanTween.moveY(block.gameObject, -block.Row + (GameBoardToUpdate.VerticalSize.value / 2f) - 0.5f, 0.5f).setOnComplete(SignalDropEnded);
+                else
+                    LeanTween.moveY(block.gameObject, -block.Row + (GameBoardToUpdate.VerticalSize.value / 2f) - 0.5f, 0.5f);
             }
         }
+    }
+
+    private void SignalDropEnded()
+    {
+        OnCheckMatches.Raise();
+        OnMovementEnded.Raise();
     }
 }

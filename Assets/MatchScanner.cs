@@ -10,8 +10,6 @@ public class MatchScanner : MonoBehaviour
     public GameEvent NoMatchFound;
     public void FindMatches()
     {
-        //List<BlockElement> matchedBlocksList = new List<BlockElement>();
-
         for (int col = 0; col < BoardToScan.HorizontalSize.value; col++)
         {
             for (int row = 0; row < BoardToScan.VerticalSize.value; row++)
@@ -31,20 +29,10 @@ public class MatchScanner : MonoBehaviour
                     BlocksMatched.Items.AddRange(horScanRes);
                     BlocksMatched.Items.Add(BoardToScan.Grid[col, row]);
                 }
-
-
             }
         }
         if (BlocksMatched.Items.Count > 0)
-        {
-
-            //foreach (var match in BlocksMatched.Items)
-            //{
-            //    //match.GetComponent<SpriteRenderer>().color = Color.grey;
-            //    //Destroy(match.gameObject);
-            //}
             MatchFound.Raise();
-        }
         else
             NoMatchFound.Raise();
     }
@@ -93,7 +81,6 @@ public class MatchScanner : MonoBehaviour
 
         for (int i = col + 1; i < BoardToScan.HorizontalSize.value; i++)
         {
-            print("OMEG ADEBIG " + col + "  ,  " + row);
             var nextBlockTypes = BoardToScan.Grid[i, row].Block.MatchingBlocks;
             bool matchFound = false;
             if(matchType)

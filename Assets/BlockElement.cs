@@ -6,7 +6,6 @@ using UnityEngine.Tilemaps;
 public class BlockElement : MonoBehaviour
 {
     public Block Block;
-    public BlocksRuntimeSet BlocksInGame;
     public BlocksRuntimeSet SelectedBlocks;
     public int Column;
     public int Row;
@@ -18,13 +17,11 @@ public class BlockElement : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         _renderer.sprite = Block.Texture;
         Block.BlockSet.Add(this);
-        BlocksInGame.Add(this);
     }
 
     private void OnDisable()
     {
         Block.BlockSet.Remove(this);
-        BlocksInGame.Remove(this);
         SelectedBlocks.Remove(this);
     }
 

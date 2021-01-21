@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1678885152}
   - component: {fileID: 7334091741022594132}
   - component: {fileID: 2121255032952357598}
+  - component: {fileID: 158156363}
   m_Layer: 0
   m_Name: BoardMonitor
   m_TagString: Untagged
@@ -49,7 +50,9 @@ MonoBehaviour:
   SelectedBlocks: {fileID: 11400000, guid: 45d93bc376ea1d14ba3d175e9bcbf544, type: 2}
   BlocksToDestroy: {fileID: 11400000, guid: f31d7b8b078d7764b831b7546eb28cfa, type: 2}
   OnCheckMatches: {fileID: 11400000, guid: fd1eb037c3dc76b4b8cbba36882bbc23, type: 2}
-  OnBlockSwapEnded: {fileID: 11400000, guid: e3e19489d0303cc4ea3f38de47f1f93b, type: 2}
+  OnBoardRefresh: {fileID: 11400000, guid: e3e19489d0303cc4ea3f38de47f1f93b, type: 2}
+  OnMovementEnded: {fileID: 11400000, guid: bdc137c392464ea4980ae33528d6940b, type: 2}
+  OnMovementStarted: {fileID: 11400000, guid: f59ad6e85fd35f0418965ceb4734c39e, type: 2}
   GameBoardToUpdate: {fileID: 11400000, guid: d550591e928de8341b4404fc211cf7ba, type: 2}
 --- !u!114 &1678885152
 MonoBehaviour:
@@ -98,7 +101,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1798004927545602811}
-        m_MethodName: DestroyBlocksAndFillEmptyPlaces
+        m_MethodName: DestroyBlocks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -129,6 +132,36 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1798004927545602811}
         m_MethodName: RevertSelectedBlocks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ResponseWithObject:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &158156363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798004927545602808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ec3456656d55b49a2bc96c2cae7d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 1a78870b4f19d6249a32509af1d9c370, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1798004927545602811}
+        m_MethodName: DropBlocksToProperPlace
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

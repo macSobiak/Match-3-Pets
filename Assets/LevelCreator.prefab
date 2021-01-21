@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1756995102100610266}
   - component: {fileID: 1756995102100610267}
+  - component: {fileID: 1926195870}
   m_Layer: 0
   m_Name: LevelCreator
   m_TagString: Untagged
@@ -48,3 +49,35 @@ MonoBehaviour:
   LevelDefinition: {fileID: 11400000, guid: 1ccd9ef1d7ea39244a7250ab5f430865, type: 2}
   BlocksInGame: {fileID: 11400000, guid: f2ca07750fe5a2d49b0174f26e1d326f, type: 2}
   GameBoard: {fileID: 11400000, guid: d550591e928de8341b4404fc211cf7ba, type: 2}
+  BoardUpdated: {fileID: 11400000, guid: fd1eb037c3dc76b4b8cbba36882bbc23, type: 2}
+  BlocksGenerated: {fileID: 11400000, guid: 1a78870b4f19d6249a32509af1d9c370, type: 2}
+--- !u!114 &1926195870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756995102100610212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ec3456656d55b49a2bc96c2cae7d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: e3e19489d0303cc4ea3f38de47f1f93b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1756995102100610267}
+        m_MethodName: FillEmptyPlaces
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ResponseWithObject:
+    m_PersistentCalls:
+      m_Calls: []

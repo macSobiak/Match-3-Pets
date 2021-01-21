@@ -8,9 +8,10 @@ public class LevelCreator : MonoBehaviour
     public GameObject entityToSpawn;
 
     public LevelDefinition LevelDefinition;
-    public BlocksRuntimeSet BlocksInGame;
 
-    public GameBoard  GameBoard;
+    public GameBoard GameBoard;
+    public GameEvent BoardUpdated;
+    public GameEvent BlocksGenerated;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,35 +20,28 @@ public class LevelCreator : MonoBehaviour
         PlaceBlocks();
     }
 
-    private void InstantiateBlock(Block blockType)
+    private BlockElement InstantiateBlock(Block blockType, Vector3 position)
     {
         var blockToSpawn = entityToSpawn.GetComponent<BlockElement>();
         blockToSpawn.Block = blockType;
 
-        GameObject currentEntity = Instantiate(entityToSpawn, Vector3.zero, Quaternion.identity);
-
-        currentEntity.name = blockType.name;
+        GameObject currentEntity = Instantiate(entityToSpawn, position, Quaternion.identity);
+        return currentEntity.GetComponent<BlockElement>();
     }
 
     private void PlaceBlocks()
     {
-        int blockIdx = 0;
         for (int col = 0; col < GameBoard.HorizontalSize.value; col++)
         {
             for (int row = 0; row < GameBoard.VerticalSize.value; row++)
             {
-                List<Block> possibleBlockTypes = new List<Block>(LevelDefinition.BlockTypesToSpawn);
-                for (int i = possibleBlockTypes.Count - 1; i >= 0; i--)
-                {
-                    if (possibleBlockTypes[i].BlockSet.Items.Count >= possibleBlockTypes[i].MaxOccurences.value)
-                        possibleBlockTypes.Remove(possibleBlockTypes[i]);
-                }
+                List<Block> possibleBlockTypes = GetPossibleBlockTypes();
 
 
                 //Choose what sprite to use for this cell
                 Block left1 = GetBlockTypeFromGrid(col - 1, row); //2
                 Block left2 = GetBlockTypeFromGrid(col - 2, row);
-                if(left1 != null)
+                if (left1 != null)
                 {
                     foreach (var blockToRemove in left1.CannotBeAjacentTo)
                         possibleBlockTypes.Remove(blockToRemove);
@@ -57,7 +51,7 @@ public class LevelCreator : MonoBehaviour
                 {
                     foreach (var matchingBlock in left1.MatchingBlocks)
                     {
-                        if(left2.MatchingBlocks.Contains(matchingBlock))
+                        if (left2.MatchingBlocks.Contains(matchingBlock))
                         {
                             for (int i = possibleBlockTypes.Count - 1; i >= 0; i--)
                             {
@@ -102,20 +96,26 @@ public class LevelCreator : MonoBehaviour
                     }
                 }
 
-                InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)]);
+                var blockSpawned = InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)], new Vector3(col - (GameBoard.HorizontalSize.value / 2f) + 0.5f, -row + (GameBoard.VerticalSize.value / 2f) - 0.5f, 0f));
+                blockSpawned.Column = col;
+                blockSpawned.Row = row;
 
-                BlocksInGame.Items[blockIdx].transform.position = new Vector3(col - (GameBoard.HorizontalSize.value / 2f) + 0.5f, -row + (GameBoard.VerticalSize.value / 2f) - 0.5f, 0f);
-                BlocksInGame.Items[blockIdx].Column = col;
-                BlocksInGame.Items[blockIdx].Row = row;
-
-                GameBoard.Grid[col, row] = BlocksInGame.Items[blockIdx];
-
-                print(GameBoard.Grid[col, row].GetComponent<BlockElement>().name + " (" + col + ", " + row + ")");
-
-                blockIdx++;
-
+                GameBoard.Grid[col, row] = blockSpawned;
             }
         }
+        BoardUpdated.Raise();
+    }
+
+    private List<Block> GetPossibleBlockTypes()
+    {
+        List<Block> possibleBlockTypes = new List<Block>(LevelDefinition.BlockTypesToSpawn);
+        for (int i = possibleBlockTypes.Count - 1; i >= 0; i--)
+        {
+            if (possibleBlockTypes[i].BlockSet.Items.Count >= possibleBlockTypes[i].MaxOccurences.value)
+                possibleBlockTypes.Remove(possibleBlockTypes[i]);
+        }
+
+        return possibleBlockTypes;
     }
 
     Block GetBlockTypeFromGrid(int col, int row)
@@ -126,4 +126,45 @@ public class LevelCreator : MonoBehaviour
         return GameBoard.Grid[col, row].Block;
     }
 
+    public void FillEmptyPlaces()
+    {
+
+        for (int col = 0; col < GameBoard.HorizontalSize.value; col++)
+        {
+            int rowOffset = 0;
+
+            for (int row = GameBoard.VerticalSize.value - 1; row >= 0; row--)
+            {
+                if (GameBoard.Grid[col, row] == null)
+                {
+                    bool blockFound = false; ;
+                    for(int i = row - 1; i >= 0; i--)
+                    {
+                        if(GameBoard.Grid[col, i] != null)
+                        {
+                            GameBoard.Grid[col, row] = GameBoard.Grid[col, i];
+                            GameBoard.Grid[col, i].Column = col;
+                            GameBoard.Grid[col, i].Row = row;
+                            GameBoard.Grid[col, i] = null;
+                            blockFound = true;
+                            break;
+                        }
+                    }
+                    if(!blockFound)
+                    {
+                        rowOffset = (row + 1) > rowOffset ? (row + 1) : rowOffset;
+                        List<Block> possibleBlockTypes = GetPossibleBlockTypes();
+
+                        var blockSpawned = InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)], new Vector3(col - (GameBoard.HorizontalSize.value / 2f) + 0.5f, -row + (GameBoard.VerticalSize.value / 2f) - 0.5f + rowOffset, 0f));
+                        blockSpawned.Column = col;
+                        blockSpawned.Row = row;
+
+                        GameBoard.Grid[col, row] = blockSpawned;
+                    }
+                }
+
+            }
+        }
+        BlocksGenerated.Raise();
+    }
 }

@@ -98,6 +98,7 @@ MonoBehaviour:
   Block: {fileID: 11400000, guid: 831cf835b3e13c54da355c1ce861d495, type: 2}
   BlocksInGame: {fileID: 11400000, guid: f2ca07750fe5a2d49b0174f26e1d326f, type: 2}
   SelectedBlocks: {fileID: 11400000, guid: 45d93bc376ea1d14ba3d175e9bcbf544, type: 2}
+  MatchedBlocks: {fileID: 11400000, guid: f31d7b8b078d7764b831b7546eb28cfa, type: 2}
   Column: 0
   Row: 0
   IsSelected: 0

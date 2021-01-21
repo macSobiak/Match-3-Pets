@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1989748913718863361}
   - component: {fileID: 1898703731}
   - component: {fileID: 1878542508052653383}
+  - component: {fileID: 1898703735}
   m_Layer: 0
   m_Name: BlockHighlighter
   m_TagString: Untagged
@@ -91,6 +92,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: e3e19489d0303cc4ea3f38de47f1f93b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1989748913718863361}
+        m_MethodName: DeselectAndClearAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ResponseWithObject:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1898703735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4608904976004644207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ec3456656d55b49a2bc96c2cae7d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: bdc137c392464ea4980ae33528d6940b, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
