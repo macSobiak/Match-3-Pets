@@ -60,7 +60,8 @@ public class MatchScanner : MonoBehaviour
                 {
                     if (nextBlockTypes.Contains(blockType))
                     {
-                        matchType = blockType;
+                        if(nextBlockTypes.Count == 1)
+                            matchType = blockType;
                         matchedBlocksVerticalList.Add(BoardToScan.Grid[col, i]);
                         matchFound = true;
                         break;
@@ -97,7 +98,8 @@ public class MatchScanner : MonoBehaviour
                 {
                     if (nextBlockTypes.Contains(blockType))
                     {
-                        matchType = blockType;
+                        if (nextBlockTypes.Count == 1)
+                            matchType = blockType;
                         matchedBlocksVerticalList.Add(BoardToScan.Grid[i, row]);
                         matchFound = true;
                         break;
