@@ -9,15 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52df35f7e0ce5bc49b579a9be5d615a9, type: 3}
-  m_Name: Level1Definition
+  m_Script: {fileID: 11500000, guid: 899658c8f1ffe5440851573b0a9eb55f, type: 3}
+  m_Name: BombBlock
   m_EditorClassIdentifier: 
-  BlockTypesToSpawn:
+  Texture: {fileID: 21300000, guid: a18178dac48afa141b1aca1b2d989c11, type: 3}
+  HighlightTexture: {fileID: 21300000, guid: a6f7c162433342b48b1a637a40997dc9, type: 3}
+  MatchingBlocks:
   - {fileID: 11400000, guid: 0ab0fdd749976c743b4ec9e7a83d05fa, type: 2}
   - {fileID: 11400000, guid: a72413fd709142443a5fa3d39141a3a6, type: 2}
   - {fileID: 11400000, guid: 831cf835b3e13c54da355c1ce861d495, type: 2}
   - {fileID: 11400000, guid: c2962357f11851d42baa9c31398e6f1a, type: 2}
-  - {fileID: 11400000, guid: 95d342a45c99864439763153926ae228, type: 2}
-  - {fileID: 11400000, guid: 4c30dd728bef1fe4397f610e808821ab, type: 2}
+  - {fileID: 11400000}
   - {fileID: 11400000, guid: 36f5ca7360a243b4797656eeee038c9d, type: 2}
-  GameBoard: {fileID: 11400000, guid: d550591e928de8341b4404fc211cf7ba, type: 2}
+  CannotBeAjacentTo:
+  - {fileID: 11400000, guid: 36f5ca7360a243b4797656eeee038c9d, type: 2}
+  - {fileID: 11400000}
+  MaxOccurences: {fileID: 11400000, guid: 74abbfc008c875149985b9bcecf7c887, type: 2}
+  BlockSet: {fileID: 11400000, guid: c97e3e836a6f0ba458e39f70a95d8359, type: 2}

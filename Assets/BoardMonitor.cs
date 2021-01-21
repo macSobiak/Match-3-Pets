@@ -8,22 +8,13 @@ public class BoardMonitor : MonoBehaviour
 {
     public BlocksRuntimeSet SelectedBlocks;
     public BlocksRuntimeSet BlocksToDestroy;
+
     public GameEvent OnCheckMatches;
     public GameEvent OnBoardRefresh;
     public GameEvent OnMovementEnded;
     public GameEvent OnMovementStarted;
 
     public GameBoard GameBoardToUpdate;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void SwapSelectedBlocks()
     {
@@ -69,13 +60,6 @@ public class BoardMonitor : MonoBehaviour
         LeanTween.moveY(elementsToSwap2.gameObject, y1, 0.5f);
     }
 
-    private void MoveBlockToLocation(GameObject elementsToMove, Vector2 destinationOnGrid)
-    {
-        //LeanTween.moveX(elementsToMove, x2, 0.5f).setOnComplete(OnBlockSwapEnded.Raise);
-        //LeanTween.moveY(elementsToMove, y2, 0.5f);
-        //LeanTween.moveX(elementsToMove, x1, 0.5f);
-        //LeanTween.moveY(elementsToMove, y1, 0.5f);
-    }
     public void DestroyBlocks()
     {
         for (int i = BlocksToDestroy.Items.Count - 1; i >= 0; i--)

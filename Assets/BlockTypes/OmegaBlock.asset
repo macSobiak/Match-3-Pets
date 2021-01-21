@@ -14,12 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Texture: {fileID: 21300000, guid: fc5a625b5f10fc84381331c419286ab6, type: 3}
   HighlightTexture: {fileID: 21300000, guid: a6f7c162433342b48b1a637a40997dc9, type: 3}
-  MatchingBlocks:
-  - {fileID: 11400000}
-  - {fileID: 11400000, guid: c2962357f11851d42baa9c31398e6f1a, type: 2}
-  - {fileID: 11400000, guid: 831cf835b3e13c54da355c1ce861d495, type: 2}
-  - {fileID: 11400000, guid: a72413fd709142443a5fa3d39141a3a6, type: 2}
-  - {fileID: 11400000, guid: 0ab0fdd749976c743b4ec9e7a83d05fa, type: 2}
+  MatchingBlocks: []
   CannotBeAjacentTo:
   - {fileID: 11400000}
   MaxOccurences: {fileID: 11400000, guid: 74abbfc008c875149985b9bcecf7c887, type: 2}

@@ -12,5 +12,4 @@ public class Block : ScriptableObject
     public List<Block> CannotBeAjacentTo = new List<Block>();
     public IntVariable MaxOccurences;
     public BlocksRuntimeSet BlockSet;
-
 }

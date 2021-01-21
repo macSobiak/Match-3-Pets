@@ -9,7 +9,6 @@ public class BlockElement : MonoBehaviour
     public BlocksRuntimeSet SelectedBlocks;
     public int Column;
     public int Row;
-    public bool IsSelected;
     private SpriteRenderer _renderer;
 
     private void OnEnable()

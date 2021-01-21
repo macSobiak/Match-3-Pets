@@ -5,10 +5,43 @@ using UnityEngine;
 public class MatchScanner : MonoBehaviour
 {
     public GameBoard BoardToScan;
+
     public BlocksRuntimeSet BlocksMatched;
+    public BlocksRuntimeSet BlocksSwapped;
+    public BlocksRuntimeSet AllColorBlocks;
+    public BlocksRuntimeSet BombBlocks;
+
     public GameEvent MatchFound;
     public GameEvent NoMatchFound;
     public void FindMatches()
+    {
+        FindMatchesFromSwappingSpecialBlocks();
+
+        FindAdjacentMatches();
+
+        if (BlocksMatched.Items.Count > 0)
+        {
+            FindMatchesForExplodingBombBlockIfAvailable();
+            MatchFound.Raise();
+        }
+        else
+            NoMatchFound.Raise();
+    }
+
+    private void FindMatchesForExplodingBombBlockIfAvailable()
+    {
+        List<BlockElement> additionalBlockFromSpecialBehaviors = new List<BlockElement>();
+        foreach (var matchedBlock in BlocksMatched.Items)
+        {
+            if (BombBlocks.Items.Contains(matchedBlock))
+            {
+                additionalBlockFromSpecialBehaviors = GetSurroundingBlocks(matchedBlock, 1);
+            }
+        }
+        BlocksMatched.AddRange(additionalBlockFromSpecialBehaviors);
+    }
+
+    private void FindAdjacentMatches()
     {
         for (int col = 0; col < BoardToScan.HorizontalSize.value; col++)
         {
@@ -19,22 +52,55 @@ public class MatchScanner : MonoBehaviour
                 var verScanRes = ScanVertical(col, row, currentBlockTypes);
                 if (verScanRes.Count >= 2)
                 {
-                    BlocksMatched.Items.AddRange(verScanRes);
-                    BlocksMatched.Items.Add(BoardToScan.Grid[col, row]);
+                    BlocksMatched.AddRange(verScanRes);
+                    BlocksMatched.Add(BoardToScan.Grid[col, row]);
                 }
 
                 var horScanRes = ScanHorizontal(col, row, currentBlockTypes);
                 if (horScanRes.Count >= 2)
                 {
-                    BlocksMatched.Items.AddRange(horScanRes);
-                    BlocksMatched.Items.Add(BoardToScan.Grid[col, row]);
+                    BlocksMatched.AddRange(horScanRes);
+                    BlocksMatched.Add(BoardToScan.Grid[col, row]);
                 }
             }
         }
-        if (BlocksMatched.Items.Count > 0)
-            MatchFound.Raise();
-        else
-            NoMatchFound.Raise();
+    }
+
+    private void FindMatchesFromSwappingSpecialBlocks()
+    {
+        if (BlocksSwapped.Items.Count >= 2)
+        {
+            if (AllColorBlocks.Items.Contains(BlocksSwapped.Items[0]))
+            {
+                BlocksMatched.AddRange(BlocksSwapped.Items[1].Block.BlockSet.Items);
+                BlocksMatched.Add(BlocksSwapped.Items[0]);
+            }
+            else if (AllColorBlocks.Items.Contains(BlocksSwapped.Items[1]))
+            {
+                BlocksMatched.AddRange(BlocksSwapped.Items[0].Block.BlockSet.Items);
+                BlocksMatched.Add(BlocksSwapped.Items[1]);
+            }
+        }
+    }
+
+    private List<BlockElement> GetSurroundingBlocks(BlockElement matchedBlock, int range)
+    {
+        List<BlockElement> surroundingBlockList = new List<BlockElement>();
+
+        for(int i=1; i <= range; i++)
+        {
+            surroundingBlockList.Add(BoardToScan.GetBlockFromGrid(matchedBlock.Column - i, matchedBlock.Row - i));
+            surroundingBlockList.Add(BoardToScan.GetBlockFromGrid(matchedBlock.Column - i, matchedBlock.Row));
+            surroundingBlockList.Add(BoardToScan.GetBlockFromGrid(matchedBlock.Column - i, matchedBlock.Row + i));
+            surroundingBlockList.Add(BoardToScan.GetBlockFromGrid(matchedBlock.Column, matchedBlock.Row - i));
+            surroundingBlockList.Add(BoardToScan.GetBlockFromGrid(matchedBlock.Column, matchedBlock.Row + i));
+            surroundingBlockList.Add(BoardToScan.GetBlockFromGrid(matchedBlock.Column + i, matchedBlock.Row - i));
+            surroundingBlockList.Add(BoardToScan.GetBlockFromGrid(matchedBlock.Column + i, matchedBlock.Row));
+            surroundingBlockList.Add(BoardToScan.GetBlockFromGrid(matchedBlock.Column + i, matchedBlock.Row + i));
+        }
+
+
+        return surroundingBlockList;
     }
 
     private List<BlockElement> ScanVertical(int col, int row, List<Block> currentBlockTypes)

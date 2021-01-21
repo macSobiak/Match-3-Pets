@@ -13,8 +13,6 @@ public class BlockHighlighter : MonoBehaviour
         var block = objectToHighlight.GetComponent<BlockElement>();
         if (block)
         {
-            block.IsSelected = !block.IsSelected;
-
             if (SelectedBlocksToHighlight.Items.Count >= 2)
             {
                 DeselectAndClearAll();
@@ -33,7 +31,6 @@ public class BlockHighlighter : MonoBehaviour
                 OnBlockReadyToSwap.Raise();
             }
         }
-
     }
 
     public void DeselectAndClearAll()

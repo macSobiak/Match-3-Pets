@@ -39,8 +39,8 @@ public class LevelCreator : MonoBehaviour
 
 
                 //Choose what sprite to use for this cell
-                Block left1 = GetBlockTypeFromGrid(col - 1, row); //2
-                Block left2 = GetBlockTypeFromGrid(col - 2, row);
+                Block left1 = GameBoard.GetBlockTypeFromGrid(col - 1, row); //2
+                Block left2 = GameBoard.GetBlockTypeFromGrid(col - 2, row);
                 if (left1 != null)
                 {
                     foreach (var blockToRemove in left1.CannotBeAjacentTo)
@@ -68,8 +68,8 @@ public class LevelCreator : MonoBehaviour
 
                 }
 
-                Block down1 = GetBlockTypeFromGrid(col, row - 1); // 5
-                Block down2 = GetBlockTypeFromGrid(col, row - 2);
+                Block down1 = GameBoard.GetBlockTypeFromGrid(col, row - 1); // 5
+                Block down2 = GameBoard.GetBlockTypeFromGrid(col, row - 2);
                 if (down1 != null)
                 {
                     foreach (var blockToRemove in down1.CannotBeAjacentTo)
@@ -118,13 +118,13 @@ public class LevelCreator : MonoBehaviour
         return possibleBlockTypes;
     }
 
-    Block GetBlockTypeFromGrid(int col, int row)
-    {
-        if (col > GameBoard.HorizontalSize.value || col < 0
-            || row > GameBoard.VerticalSize.value || row < 0)
-            return null;
-        return GameBoard.Grid[col, row].Block;
-    }
+    //Block GetBlockTypeFromGrid(int col, int row)
+    //{
+    //    if (col > GameBoard.HorizontalSize.value || col < 0
+    //        || row > GameBoard.VerticalSize.value || row < 0)
+    //        return null;
+    //    return GameBoard.Grid[col, row].Block;
+    //}
 
     public void FillEmptyPlaces()
     {
