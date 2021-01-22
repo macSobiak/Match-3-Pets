@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e9a84421799e534d9c5fecdd5579833, type: 3}
-  m_Name: HorizontalSize
+  m_Script: {fileID: 11500000, guid: dab6669e45ee94a40b6d78cae66ee342, type: 3}
+  m_Name: SpecialBlockProb
   m_EditorClassIdentifier: 
-  Value: 7
+  Value: 0.05

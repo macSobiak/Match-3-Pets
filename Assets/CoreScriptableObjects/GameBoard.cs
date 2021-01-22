@@ -11,16 +11,16 @@ public class GameBoard : ScriptableObject
 
     public Block GetBlockTypeFromGrid(int col, int row)
     {
-        if (col > HorizontalSize.value || col < 0
-            || row > VerticalSize.value || row < 0)
+        if (col >= HorizontalSize.Value || col < 0
+            || row >= VerticalSize.Value || row < 0)
             return null;
         return Grid[col, row].Block;
     }
 
     public BlockElement GetBlockFromGrid(int col, int row)
     {
-        if (col > HorizontalSize.value || col < 0
-            || row > VerticalSize.value || row < 0)
+        if (col >= HorizontalSize.Value || col < 0
+            || row >= VerticalSize.Value || row < 0)
             return null;
         return Grid[col, row];
     }

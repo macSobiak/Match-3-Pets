@@ -7,6 +7,7 @@ public class BlockElement : MonoBehaviour
 {
     public Block Block;
     public BlocksRuntimeSet SelectedBlocks;
+    public BlocksRuntimeSet MatchedBlocks;
     public int Column;
     public int Row;
     private SpriteRenderer _renderer;
@@ -22,6 +23,7 @@ public class BlockElement : MonoBehaviour
     {
         Block.BlockSet.Remove(this);
         SelectedBlocks.Remove(this);
+        MatchedBlocks.Remove(this);
     }
 
     void Update()

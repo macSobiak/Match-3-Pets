@@ -43,9 +43,9 @@ public class MatchScanner : MonoBehaviour
 
     private void FindAdjacentMatches()
     {
-        for (int col = 0; col < BoardToScan.HorizontalSize.value; col++)
+        for (int col = 0; col < BoardToScan.HorizontalSize.Value; col++)
         {
-            for (int row = 0; row < BoardToScan.VerticalSize.value; row++)
+            for (int row = 0; row < BoardToScan.VerticalSize.Value; row++)
             {
                 var currentBlockTypes = BoardToScan.Grid[col, row].Block.MatchingBlocks;
 
@@ -108,7 +108,7 @@ public class MatchScanner : MonoBehaviour
         Block matchType = null;
         List<BlockElement> matchedBlocksVerticalList = new List<BlockElement>();
 
-        for (int i = row + 1; i < BoardToScan.VerticalSize.value; i++)
+        for (int i = row + 1; i < BoardToScan.VerticalSize.Value; i++)
         {
             var nextBlockTypes = BoardToScan.Grid[col, i].Block.MatchingBlocks;
             bool matchFound = false;
@@ -146,7 +146,7 @@ public class MatchScanner : MonoBehaviour
         Block matchType = null;
         List<BlockElement> matchedBlocksVerticalList = new List<BlockElement>();
 
-        for (int i = col + 1; i < BoardToScan.HorizontalSize.value; i++)
+        for (int i = col + 1; i < BoardToScan.HorizontalSize.Value; i++)
         {
             var nextBlockTypes = BoardToScan.Grid[i, row].Block.MatchingBlocks;
             bool matchFound = false;

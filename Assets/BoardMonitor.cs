@@ -60,29 +60,48 @@ public class BoardMonitor : MonoBehaviour
         LeanTween.moveY(elementsToSwap2.gameObject, y1, 0.5f);
     }
 
-    public void DestroyBlocks()
+    private void DestroyBlocks()
     {
         for (int i = BlocksToDestroy.Items.Count - 1; i >= 0; i--)
         {
             GameBoardToUpdate.Grid[BlocksToDestroy.Items[i].Column, BlocksToDestroy.Items[i].Row] = null;
             Destroy(BlocksToDestroy.Items[i].gameObject);
-            BlocksToDestroy.Remove(BlocksToDestroy.Items[i]);
         }
         OnBoardRefresh.Raise();
+
     }
+
+    public void DestroyAnimation()
+    {
+        for (int i = BlocksToDestroy.Items.Count - 1; i >= 0; i--)
+        {
+            LeanTween.rotateZ(BlocksToDestroy.Items[i].gameObject, 180f, 0.5f).setEase(LeanTweenType.easeInQuad);
+            LeanTween.scaleX(BlocksToDestroy.Items[i].gameObject, 0.02f, 0.5f).setEase(LeanTweenType.easeInQuad);
+
+            if (i == 0)
+            {
+                LeanTween.scaleY(BlocksToDestroy.Items[i].gameObject, 0.02f, 0.5f).setEase(LeanTweenType.easeInQuad).setOnComplete(DestroyBlocks); ;
+            }
+            else
+            {
+                LeanTween.scaleY(BlocksToDestroy.Items[i].gameObject, 0.02f, 0.5f).setEase(LeanTweenType.easeInQuad);
+            }
+        }
+    }
+
     public void DropBlocksToProperPlace()
     {
         OnMovementStarted.Raise();
-        for (int col = 0; col < GameBoardToUpdate.HorizontalSize.value; col++)
+        for (int col = 0; col < GameBoardToUpdate.HorizontalSize.Value; col++)
         {
-            for (int row = 0; row < GameBoardToUpdate.VerticalSize.value; row++)
+            for (int row = 0; row < GameBoardToUpdate.VerticalSize.Value; row++)
             {
                 var block = GameBoardToUpdate.Grid[col, row];
-                new Vector3(block.Column - (GameBoardToUpdate.HorizontalSize.value / 2f) + 0.5f, -block.Row + (GameBoardToUpdate.VerticalSize.value / 2f) - 0.5f, 0f);
-                if(col == GameBoardToUpdate.HorizontalSize.value-1 && row == GameBoardToUpdate.VerticalSize.value-1)
-                    LeanTween.moveY(block.gameObject, -block.Row + (GameBoardToUpdate.VerticalSize.value / 2f) - 0.5f, 0.5f).setOnComplete(SignalDropEnded);
+                new Vector3(block.Column - (GameBoardToUpdate.HorizontalSize.Value / 2f) + 0.5f, -block.Row + (GameBoardToUpdate.VerticalSize.Value / 2f) - 0.5f, 0f);
+                if(col == GameBoardToUpdate.HorizontalSize.Value-1 && row == GameBoardToUpdate.VerticalSize.Value-1)
+                    LeanTween.moveY(block.gameObject, -block.Row + (GameBoardToUpdate.VerticalSize.Value / 2f) - 0.5f, 0.5f).setEase(LeanTweenType.easeInQuad).setOnComplete(SignalDropEnded);
                 else
-                    LeanTween.moveY(block.gameObject, -block.Row + (GameBoardToUpdate.VerticalSize.value / 2f) - 0.5f, 0.5f);
+                    LeanTween.moveY(block.gameObject, -block.Row + (GameBoardToUpdate.VerticalSize.Value / 2f) - 0.5f, 0.5f).setEase(LeanTweenType.easeInQuad);
             }
         }
     }

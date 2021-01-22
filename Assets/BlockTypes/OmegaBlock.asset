@@ -17,5 +17,6 @@ MonoBehaviour:
   MatchingBlocks: []
   CannotBeAjacentTo:
   - {fileID: 11400000}
-  MaxOccurences: {fileID: 11400000, guid: 74abbfc008c875149985b9bcecf7c887, type: 2}
   BlockSet: {fileID: 11400000, guid: 3c090d6187c871b46b517644f2c63aa6, type: 2}
+  MaxOccurences: {fileID: 11400000, guid: 74abbfc008c875149985b9bcecf7c887, type: 2}
+  SpawnProbability: {fileID: 11400000, guid: af8bb025a6104f641b98b37055c584ae, type: 2}

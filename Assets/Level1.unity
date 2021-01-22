@@ -409,6 +409,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1798004927545602811, guid: 52a6bc1f08791b5419cc22b3e01007fb,
+        type: 3}
+      propertyPath: BombBlocks
+      value: 
+      objectReference: {fileID: 11400000, guid: c97e3e836a6f0ba458e39f70a95d8359,
+        type: 2}
+    - target: {fileID: 7334091741022594132, guid: 52a6bc1f08791b5419cc22b3e01007fb,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DestroyAnimation
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52a6bc1f08791b5419cc22b3e01007fb, type: 3}
 --- !u!1001 &6443040762193634116
@@ -618,9 +629,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5899591438021388194, guid: c2fa515556771a74cb2ba62d5602721d,
         type: 3}
+      propertyPath: BombBlocks
+      value: 
+      objectReference: {fileID: 11400000, guid: c97e3e836a6f0ba458e39f70a95d8359,
+        type: 2}
+    - target: {fileID: 5899591438021388194, guid: c2fa515556771a74cb2ba62d5602721d,
+        type: 3}
       propertyPath: BlocksSwapped
       value: 
       objectReference: {fileID: 11400000, guid: 45d93bc376ea1d14ba3d175e9bcbf544,
+        type: 2}
+    - target: {fileID: 5899591438021388194, guid: c2fa515556771a74cb2ba62d5602721d,
+        type: 3}
+      propertyPath: AllColorBlocks
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c090d6187c871b46b517644f2c63aa6,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2fa515556771a74cb2ba62d5602721d, type: 3}

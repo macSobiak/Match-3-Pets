@@ -15,7 +15,7 @@ public class LevelCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameBoard.Grid = new BlockElement[GameBoard.HorizontalSize.value, GameBoard.VerticalSize.value];
+        GameBoard.Grid = new BlockElement[GameBoard.HorizontalSize.Value, GameBoard.VerticalSize.Value];
 
         PlaceBlocks();
     }
@@ -31,12 +31,15 @@ public class LevelCreator : MonoBehaviour
 
     private void PlaceBlocks()
     {
-        for (int col = 0; col < GameBoard.HorizontalSize.value; col++)
+        for (int col = 0; col < GameBoard.HorizontalSize.Value; col++)
         {
-            for (int row = 0; row < GameBoard.VerticalSize.value; row++)
+            for (int row = 0; row < GameBoard.VerticalSize.Value; row++)
             {
                 List<Block> possibleBlockTypes = GetPossibleBlockTypes();
-
+                if (possibleBlockTypes.Count == 1)
+                {
+                    print("HALUUUUUUUUU");
+                }
 
                 //Choose what sprite to use for this cell
                 Block left1 = GameBoard.GetBlockTypeFromGrid(col - 1, row); //2
@@ -95,8 +98,11 @@ public class LevelCreator : MonoBehaviour
                         }
                     }
                 }
-
-                var blockSpawned = InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)], new Vector3(col - (GameBoard.HorizontalSize.value / 2f) + 0.5f, -row + (GameBoard.VerticalSize.value / 2f) - 0.5f, 0f));
+                if(possibleBlockTypes.Count < 1)
+                {
+                    print("HALUUUUUUUUU");
+                }
+                var blockSpawned = InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)], new Vector3(col - (GameBoard.HorizontalSize.Value / 2f) + 0.5f, -row + (GameBoard.VerticalSize.Value / 2f) - 0.5f, 0f));
                 blockSpawned.Column = col;
                 blockSpawned.Row = row;
 
@@ -111,29 +117,32 @@ public class LevelCreator : MonoBehaviour
         List<Block> possibleBlockTypes = new List<Block>(LevelDefinition.BlockTypesToSpawn);
         for (int i = possibleBlockTypes.Count - 1; i >= 0; i--)
         {
-            if (possibleBlockTypes[i].BlockSet.Items.Count >= possibleBlockTypes[i].MaxOccurences.value)
-                possibleBlockTypes.Remove(possibleBlockTypes[i]);
+            var blockType = possibleBlockTypes[i];
+            if (blockType.BlockSet.Items.Count >= blockType.MaxOccurences.Value)
+                possibleBlockTypes.Remove(blockType);
+            else
+            {
+                if (blockType.SpawnProbability.Value != 1f)
+                {
+                    var roll = Random.Range(0f, 1f);
+                    if (roll > blockType.SpawnProbability.Value)
+                    {
+                        possibleBlockTypes.Remove(blockType); // ensure that after unsuccessful roll the block will not be considered for placing
+                    }
+                }
+            }
         }
-
         return possibleBlockTypes;
     }
-
-    //Block GetBlockTypeFromGrid(int col, int row)
-    //{
-    //    if (col > GameBoard.HorizontalSize.value || col < 0
-    //        || row > GameBoard.VerticalSize.value || row < 0)
-    //        return null;
-    //    return GameBoard.Grid[col, row].Block;
-    //}
 
     public void FillEmptyPlaces()
     {
 
-        for (int col = 0; col < GameBoard.HorizontalSize.value; col++)
+        for (int col = 0; col < GameBoard.HorizontalSize.Value; col++)
         {
             int rowOffset = 0;
 
-            for (int row = GameBoard.VerticalSize.value - 1; row >= 0; row--)
+            for (int row = GameBoard.VerticalSize.Value - 1; row >= 0; row--)
             {
                 if (GameBoard.Grid[col, row] == null)
                 {
@@ -155,7 +164,7 @@ public class LevelCreator : MonoBehaviour
                         rowOffset = (row + 1) > rowOffset ? (row + 1) : rowOffset;
                         List<Block> possibleBlockTypes = GetPossibleBlockTypes();
 
-                        var blockSpawned = InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)], new Vector3(col - (GameBoard.HorizontalSize.value / 2f) + 0.5f, -row + (GameBoard.VerticalSize.value / 2f) - 0.5f + rowOffset, 0f));
+                        var blockSpawned = InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)], new Vector3(col - (GameBoard.HorizontalSize.Value / 2f) + 0.5f, -row + (GameBoard.VerticalSize.Value / 2f) - 0.5f + rowOffset, 0f));
                         blockSpawned.Column = col;
                         blockSpawned.Row = row;
 
