@@ -18,7 +18,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ab0fdd749976c743b4ec9e7a83d05fa, type: 2}
   - {fileID: 11400000, guid: a72413fd709142443a5fa3d39141a3a6, type: 2}
   CannotBeAjacentTo:
+  - {fileID: 11400000, guid: 0ab0fdd749976c743b4ec9e7a83d05fa, type: 2}
+  - {fileID: 11400000, guid: a72413fd709142443a5fa3d39141a3a6, type: 2}
   - {fileID: 11400000}
   BlockSet: {fileID: 11400000, guid: 3c80671c6a1f1bc48bea5854f0f3b318, type: 2}
-  MaxOccurences: {fileID: 11400000, guid: 74abbfc008c875149985b9bcecf7c887, type: 2}
-  SpawnProbability: {fileID: 11400000, guid: af8bb025a6104f641b98b37055c584ae, type: 2}
+  MaxOccurences: {fileID: 11400000, guid: 327a78e5090b53a4aa95d25ccb382301, type: 2}
+  SpawnProbability: {fileID: 11400000, guid: 8055787e54d3d424ca94f0e374f40e6f, type: 2}

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6071254085707704346
+--- !u!1 &5793948998132761097
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4139597468647965209}
-  - component: {fileID: 5200364010266065252}
-  - component: {fileID: -8008237343064783774}
-  - component: {fileID: -4016721703403390069}
+  - component: {fileID: 5793948998132761098}
+  - component: {fileID: 5793948998132761099}
+  - component: {fileID: 5793948998132761096}
   m_Layer: 0
-  m_Name: BlockElement
+  m_Name: BackBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4139597468647965209
+--- !u!4 &5793948998132761098
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6071254085707704346}
+  m_GameObject: {fileID: 5793948998132761097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.46860236, y: -0.50190353, z: -3.077574}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5200364010266065252
+--- !u!212 &5793948998132761099
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6071254085707704346}
+  m_GameObject: {fileID: 5793948998132761097}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -71,59 +70,29 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 844885d2df36a624b80f9ffe0729806c, type: 3}
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: db014184859d4704c8fae6d22ece994d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_DrawMode: 2
+  m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-8008237343064783774
+--- !u!114 &5793948998132761096
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6071254085707704346}
+  m_GameObject: {fileID: 5793948998132761097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0f820b5767f104cb09ab6b6a0db5f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 567df0ffe22c5ab47b619a4c8b329e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Block: {fileID: 11400000, guid: a72413fd709142443a5fa3d39141a3a6, type: 2}
-  SelectedBlocks: {fileID: 11400000, guid: 45d93bc376ea1d14ba3d175e9bcbf544, type: 2}
-  MatchedBlocks: {fileID: 11400000, guid: f31d7b8b078d7764b831b7546eb28cfa, type: 2}
-  Column: 0
-  Row: 0
-  OnBlockDestroyed: {fileID: 11400000, guid: 9936510aa953376449035190da685d83, type: 2}
---- !u!61 &-4016721703403390069
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6071254085707704346}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
-    newSize: {x: 2.56, y: 2.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
-  m_EdgeRadius: 0
+  HorizontalSize: {fileID: 11400000, guid: 10026df55d9577f42af1fb9e8ce08dbf, type: 2}
+  VerticalSize: {fileID: 11400000, guid: 3e73a1a574860874f90cf40b88aec68b, type: 2}

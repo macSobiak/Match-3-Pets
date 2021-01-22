@@ -75,7 +75,7 @@ public class BoardMonitor : MonoBehaviour
     {
         for (int i = BlocksToDestroy.Items.Count - 1; i >= 0; i--)
         {
-            LeanTween.rotateZ(BlocksToDestroy.Items[i].gameObject, 180f, 0.5f).setEase(LeanTweenType.easeInQuad);
+            LeanTween.rotateZ(BlocksToDestroy.Items[i].gameObject, 180, 0.5f).setEase(LeanTweenType.easeInQuad);
             LeanTween.scaleX(BlocksToDestroy.Items[i].gameObject, 0.02f, 0.5f).setEase(LeanTweenType.easeInQuad);
 
             if (i == 0)

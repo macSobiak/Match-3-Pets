@@ -36,12 +36,7 @@ public class LevelCreator : MonoBehaviour
             for (int row = 0; row < GameBoard.VerticalSize.Value; row++)
             {
                 List<Block> possibleBlockTypes = GetPossibleBlockTypes();
-                if (possibleBlockTypes.Count == 1)
-                {
-                    print("HALUUUUUUUUU");
-                }
 
-                //Choose what sprite to use for this cell
                 Block left1 = GameBoard.GetBlockTypeFromGrid(col - 1, row); //2
                 Block left2 = GameBoard.GetBlockTypeFromGrid(col - 2, row);
                 if (left1 != null)
@@ -98,10 +93,7 @@ public class LevelCreator : MonoBehaviour
                         }
                     }
                 }
-                if(possibleBlockTypes.Count < 1)
-                {
-                    print("HALUUUUUUUUU");
-                }
+
                 var blockSpawned = InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)], new Vector3(col - (GameBoard.HorizontalSize.Value / 2f) + 0.5f, -row + (GameBoard.VerticalSize.Value / 2f) - 0.5f, 0f));
                 blockSpawned.Column = col;
                 blockSpawned.Row = row;

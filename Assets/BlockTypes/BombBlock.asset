@@ -21,6 +21,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c2962357f11851d42baa9c31398e6f1a, type: 2}
   - {fileID: 11400000}
   - {fileID: 11400000, guid: 36f5ca7360a243b4797656eeee038c9d, type: 2}
+  - {fileID: 11400000, guid: 5ba59b40545032c439e3f43967cfab61, type: 2}
   CannotBeAjacentTo:
   - {fileID: 11400000, guid: 36f5ca7360a243b4797656eeee038c9d, type: 2}
   - {fileID: 11400000}

@@ -10,6 +10,7 @@ public class BlockElement : MonoBehaviour
     public BlocksRuntimeSet MatchedBlocks;
     public int Column;
     public int Row;
+    public GameEvent OnBlockDestroyed;
     private SpriteRenderer _renderer;
 
     private void OnEnable()
@@ -24,15 +25,12 @@ public class BlockElement : MonoBehaviour
         Block.BlockSet.Remove(this);
         SelectedBlocks.Remove(this);
         MatchedBlocks.Remove(this);
-    }
 
-    void Update()
-    {
+        OnBlockDestroyed.Raise();
     }
-
     public void SelectBlock()
     {
-        _renderer.color = Color.grey;
+        _renderer.color = Color.gray;
     }
     public void DeselectBlock()
     {
