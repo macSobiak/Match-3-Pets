@@ -9,13 +9,8 @@ public class BoardPieces : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //sprite of the single board piece should be 1 unit size (100px)
         gameObject.GetComponent<SpriteRenderer>().size = new Vector2(HorizontalSize.Value, VerticalSize.Value);
         transform.position = Vector2.zero;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

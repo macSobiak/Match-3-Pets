@@ -27,6 +27,7 @@ public class GameBoard : ScriptableObject
 
     public Vector3 GetPositionOnBoardFromCoordinates(int col, int row, int rowOffset)
     {
+        //return a proper position for block or board piece based on size (to be always centered) and 1 unit of size
         return new Vector3(col - (HorizontalSize.Value / 2f) + 0.5f, -row + (VerticalSize.Value / 2f) - 0.5f + rowOffset, 0f);
     }
 }

@@ -16,6 +16,7 @@ public class GameEvent : ScriptableObject
             eventListeners[i].OnEventRaised();
     }
 
+    //overloaded funtion to pass the game object together with event
     public void Raise(GameObject obj)
     {
         for (int i = eventListeners.Count - 1; i >= 0; i--)

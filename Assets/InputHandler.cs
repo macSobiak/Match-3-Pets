@@ -7,7 +7,6 @@ public class InputHandler : MonoBehaviour
     public GameEvent OnClickEvent;
     private bool _inputDisabled = false;
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !_inputDisabled)

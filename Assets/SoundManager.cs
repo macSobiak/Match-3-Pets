@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
     public SetGroup SpecialAudioSet;
     public AudioSource AudioSource;
 
+    //play a random sound based on the set group (object that contains types of blocks that should make a specific sound)
     public void PlaySound(GameObject objectClicked)
     {
         if(DogAudioSet.GroupOfSets.Contains(objectClicked.GetComponent<BlockElement>().Block.BlockSet))

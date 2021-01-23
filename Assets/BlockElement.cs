@@ -17,6 +17,7 @@ public class BlockElement : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         _renderer.sprite = Block.Texture;
+        //Add the block to the block type set
         Block.BlockSet.Add(this);
     }
 
