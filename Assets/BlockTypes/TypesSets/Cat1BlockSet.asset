@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab6669e45ee94a40b6d78cae66ee342, type: 3}
-  m_Name: SpecialBlockProb
+  m_Script: {fileID: 11500000, guid: ce327015caa658f43acf3bb5992195fe, type: 3}
+  m_Name: Cat1BlockSet
   m_EditorClassIdentifier: 
-  Value: 0.72
+  Items: []

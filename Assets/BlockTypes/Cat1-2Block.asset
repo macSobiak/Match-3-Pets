@@ -10,13 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 899658c8f1ffe5440851573b0a9eb55f, type: 3}
-  m_Name: DBlock
+  m_Name: Cat1-2Block
   m_EditorClassIdentifier: 
-  Texture: {fileID: 21300000, guid: 851b0412444d25847b7c333248ae2e84, type: 3}
+  Texture: {fileID: 21300000, guid: 15029f3bccad77c4796584a7836919c5, type: 3}
   HighlightTexture: {fileID: 21300000, guid: a6f7c162433342b48b1a637a40997dc9, type: 3}
   MatchingBlocks:
+  - {fileID: 11400000, guid: 0ab0fdd749976c743b4ec9e7a83d05fa, type: 2}
+  - {fileID: 11400000, guid: a72413fd709142443a5fa3d39141a3a6, type: 2}
+  CannotBeAjacentTo:
+  - {fileID: 11400000, guid: 0ab0fdd749976c743b4ec9e7a83d05fa, type: 2}
+  - {fileID: 11400000, guid: a72413fd709142443a5fa3d39141a3a6, type: 2}
   - {fileID: 11400000}
-  CannotBeAjacentTo: []
-  BlockSet: {fileID: 11400000, guid: 9b56cfaed2e40de40a88cf8bb2211b2f, type: 2}
+  BlockSet: {fileID: 11400000, guid: 3c80671c6a1f1bc48bea5854f0f3b318, type: 2}
   MaxOccurences: {fileID: 11400000, guid: 327a78e5090b53a4aa95d25ccb382301, type: 2}
   SpawnProbability: {fileID: 11400000, guid: 8055787e54d3d424ca94f0e374f40e6f, type: 2}

@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce327015caa658f43acf3bb5992195fe, type: 3}
-  m_Name: CBlockSet
+  m_Script: {fileID: 11500000, guid: 24d7bafbef383e44abc9c0390cd9b6ff, type: 3}
+  m_Name: SpecialAudioSets
   m_EditorClassIdentifier: 
-  Items: []
+  GroupOfSets:
+  - {fileID: 11400000, guid: 3c090d6187c871b46b517644f2c63aa6, type: 2}
+  - {fileID: 11400000, guid: c97e3e836a6f0ba458e39f70a95d8359, type: 2}

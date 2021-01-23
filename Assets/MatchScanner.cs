@@ -21,24 +21,35 @@ public class MatchScanner : MonoBehaviour
 
         if (BlocksMatched.Items.Count > 0)
         {
-            FindMatchesForExplodingBombBlockIfAvailable();
+            AddSurroundingBlocksIfBombIsMatched(BlocksMatched.Items);
             MatchFound.Raise();
         }
         else
             NoMatchFound.Raise();
     }
 
-    private void FindMatchesForExplodingBombBlockIfAvailable()
+    private void AddSurroundingBlocksIfBombIsMatched(List<BlockElement> matchedBlocksToCheck)
     {
         List<BlockElement> additionalBlockFromSpecialBehaviors = new List<BlockElement>();
-        foreach (var matchedBlock in BlocksMatched.Items)
+
+        foreach (var matchedBlock in matchedBlocksToCheck)
         {
             if (BombBlocks.Items.Contains(matchedBlock))
             {
-                additionalBlockFromSpecialBehaviors = GetSurroundingBlocks(matchedBlock, 1);
+                foreach(var surroundingBlock in GetSurroundingBlocks(matchedBlock, 1))
+                {
+                    if(!BlocksMatched.Items.Contains(surroundingBlock))
+                        additionalBlockFromSpecialBehaviors.Add(surroundingBlock);
+                }
             }
         }
         BlocksMatched.AddRange(additionalBlockFromSpecialBehaviors);
+
+        //If exploded bomb also triggered other bomb - check it and make a chain reaction
+        if(additionalBlockFromSpecialBehaviors.Count > 0)
+        {
+            AddSurroundingBlocksIfBombIsMatched(additionalBlockFromSpecialBehaviors);
+        }
     }
 
     private void FindAdjacentMatches()

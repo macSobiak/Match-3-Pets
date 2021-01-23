@@ -10,17 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 899658c8f1ffe5440851573b0a9eb55f, type: 3}
-  m_Name: ABBlock
+  m_Name: Cat2Block
   m_EditorClassIdentifier: 
-  Texture: {fileID: 21300000, guid: 15029f3bccad77c4796584a7836919c5, type: 3}
-  HighlightTexture: {fileID: 21300000, guid: a6f7c162433342b48b1a637a40997dc9, type: 3}
+  Texture: {fileID: 21300000, guid: 99090f76feee8384994a5d7c861a4640, type: 3}
+  HighlightTexture: {fileID: 21300000, guid: 844885d2df36a624b80f9ffe0729806c, type: 3}
   MatchingBlocks:
-  - {fileID: 11400000, guid: 0ab0fdd749976c743b4ec9e7a83d05fa, type: 2}
-  - {fileID: 11400000, guid: a72413fd709142443a5fa3d39141a3a6, type: 2}
-  CannotBeAjacentTo:
-  - {fileID: 11400000, guid: 0ab0fdd749976c743b4ec9e7a83d05fa, type: 2}
-  - {fileID: 11400000, guid: a72413fd709142443a5fa3d39141a3a6, type: 2}
   - {fileID: 11400000}
-  BlockSet: {fileID: 11400000, guid: 3c80671c6a1f1bc48bea5854f0f3b318, type: 2}
+  CannotBeAjacentTo:
+  - {fileID: 11400000, guid: 95d342a45c99864439763153926ae228, type: 2}
+  BlockSet: {fileID: 11400000, guid: 60cf221c71142ae459d19a74b4c3114c, type: 2}
   MaxOccurences: {fileID: 11400000, guid: 327a78e5090b53a4aa95d25ccb382301, type: 2}
   SpawnProbability: {fileID: 11400000, guid: 8055787e54d3d424ca94f0e374f40e6f, type: 2}

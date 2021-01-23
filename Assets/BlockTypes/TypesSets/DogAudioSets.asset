@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce327015caa658f43acf3bb5992195fe, type: 3}
-  m_Name: BBlockSet
+  m_Script: {fileID: 11500000, guid: 24d7bafbef383e44abc9c0390cd9b6ff, type: 3}
+  m_Name: DogAudioSets
   m_EditorClassIdentifier: 
-  Items: []
+  GroupOfSets:
+  - {fileID: 11400000, guid: 9ba901887857a3b4dbf3f4dc6b5a7ebe, type: 2}
