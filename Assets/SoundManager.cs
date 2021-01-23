@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectSound : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     public List<AudioClip> CatAudioClips;
     public List<AudioClip> SpecialAudioClips;

@@ -24,4 +24,9 @@ public class GameBoard : ScriptableObject
             return null;
         return Grid[col, row];
     }
+
+    public Vector3 GetPositionOnBoardFromCoordinates(int col, int row, int rowOffset)
+    {
+        return new Vector3(col - (HorizontalSize.Value / 2f) + 0.5f, -row + (VerticalSize.Value / 2f) - 0.5f + rowOffset, 0f);
+    }
 }

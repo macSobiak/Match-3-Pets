@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelCreator : MonoBehaviour
+public class BlocksSpawner : MonoBehaviour
 {
     public GameObject entityToSpawn;
 
@@ -21,9 +21,7 @@ public class LevelCreator : MonoBehaviour
 
     private BlockElement InstantiateBlock(Block blockType, Vector3 position)
     {
-        var blockToSpawn = entityToSpawn.GetComponent<BlockElement>();
-        blockToSpawn.Block = blockType;
-
+        entityToSpawn.GetComponent<BlockElement>().Block = blockType;
         GameObject currentEntity = Instantiate(entityToSpawn, position, Quaternion.identity);
         return currentEntity.GetComponent<BlockElement>();
     }
@@ -93,7 +91,7 @@ public class LevelCreator : MonoBehaviour
                     }
                 }
 
-                var blockSpawned = InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)], new Vector3(col - (GameBoard.HorizontalSize.Value / 2f) + 0.5f, -row + (GameBoard.VerticalSize.Value / 2f) - 0.5f, 0f));
+                var blockSpawned = InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)], GameBoard.GetPositionOnBoardFromCoordinates(col, row, 0));
                 blockSpawned.Column = col;
                 blockSpawned.Row = row;
 
@@ -155,7 +153,7 @@ public class LevelCreator : MonoBehaviour
                         rowOffset = (row + 1) > rowOffset ? (row + 1) : rowOffset;
                         List<Block> possibleBlockTypes = GetPossibleBlockTypes();
 
-                        var blockSpawned = InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)], new Vector3(col - (GameBoard.HorizontalSize.Value / 2f) + 0.5f, -row + (GameBoard.VerticalSize.Value / 2f) - 0.5f + rowOffset, 0f));
+                        var blockSpawned = InstantiateBlock(possibleBlockTypes[Random.Range(0, possibleBlockTypes.Count)], GameBoard.GetPositionOnBoardFromCoordinates(col, row, rowOffset));
                         blockSpawned.Column = col;
                         blockSpawned.Row = row;
 

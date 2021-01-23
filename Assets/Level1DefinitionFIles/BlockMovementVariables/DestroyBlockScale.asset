@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dab6669e45ee94a40b6d78cae66ee342, type: 3}
-  m_Name: SpecialBlockProb
+  m_Name: DestroyBlockScale
   m_EditorClassIdentifier: 
-  Value: 0.45
+  Value: 0.02

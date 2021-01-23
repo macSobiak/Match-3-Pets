@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2121255032952357598}
   - component: {fileID: 158156363}
   m_Layer: 0
-  m_Name: BoardMonitor
+  m_Name: BoardMovementManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,6 +49,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SelectedBlocks: {fileID: 11400000, guid: 45d93bc376ea1d14ba3d175e9bcbf544, type: 2}
   BlocksToDestroy: {fileID: 11400000, guid: f31d7b8b078d7764b831b7546eb28cfa, type: 2}
+  DestroyScaleValue: {fileID: 11400000, guid: 06eb5cdb8a1c87242ad04a1297f055a6, type: 2}
+  DestroyRotateValue: {fileID: 11400000, guid: 83c8e288b9b139848b26e149d39bc842, type: 2}
+  DestroyBlockTimeSec: {fileID: 11400000, guid: 225b845ae6ca1094196587a137c78159,
+    type: 2}
+  FallBlockTimeSec: {fileID: 11400000, guid: a0ce4ab8d379eda41bc5016a79ff5cb7, type: 2}
+  SwapBlocksTimeSec: {fileID: 11400000, guid: 9a8a78f1d08f2174f858801ebe5400e9, type: 2}
   OnCheckMatches: {fileID: 11400000, guid: fd1eb037c3dc76b4b8cbba36882bbc23, type: 2}
   OnBoardRefresh: {fileID: 11400000, guid: e3e19489d0303cc4ea3f38de47f1f93b, type: 2}
   OnMovementEnded: {fileID: 11400000, guid: bdc137c392464ea4980ae33528d6940b, type: 2}
