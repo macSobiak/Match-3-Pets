@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class MatchScanner : MonoBehaviour
 {
-    enum ScanType
-    {
-        Vertical = 0,
-        Horizonta = 1
-    }
-
     public GameBoard BoardToScan;
 
     public BlocksRuntimeSet BlocksMatched;

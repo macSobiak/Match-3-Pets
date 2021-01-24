@@ -340,36 +340,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1798004927545602811, guid: 52a6bc1f08791b5419cc22b3e01007fb,
-        type: 3}
-      propertyPath: FallBlockTimeSec
-      value: 
-      objectReference: {fileID: 11400000, guid: a0ce4ab8d379eda41bc5016a79ff5cb7,
-        type: 2}
-    - target: {fileID: 1798004927545602811, guid: 52a6bc1f08791b5419cc22b3e01007fb,
-        type: 3}
-      propertyPath: DestroyScaleValue
-      value: 
-      objectReference: {fileID: 11400000, guid: 06eb5cdb8a1c87242ad04a1297f055a6,
-        type: 2}
-    - target: {fileID: 1798004927545602811, guid: 52a6bc1f08791b5419cc22b3e01007fb,
-        type: 3}
-      propertyPath: SwapBlocksTimeSec
-      value: 
-      objectReference: {fileID: 11400000, guid: 9a8a78f1d08f2174f858801ebe5400e9,
-        type: 2}
-    - target: {fileID: 1798004927545602811, guid: 52a6bc1f08791b5419cc22b3e01007fb,
-        type: 3}
-      propertyPath: DestroyRotateValue
-      value: 
-      objectReference: {fileID: 11400000, guid: 83c8e288b9b139848b26e149d39bc842,
-        type: 2}
-    - target: {fileID: 1798004927545602811, guid: 52a6bc1f08791b5419cc22b3e01007fb,
-        type: 3}
-      propertyPath: DestroyBlockTimeSec
-      value: 
-      objectReference: {fileID: 11400000, guid: 225b845ae6ca1094196587a137c78159,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52a6bc1f08791b5419cc22b3e01007fb, type: 3}
 --- !u!1 &1171550284
@@ -522,17 +492,17 @@ PrefabInstance:
     - target: {fileID: 621610255705452093, guid: 1cdaa2ade1af5fe4e972f57169ecfaf6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6060421
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 621610255705452093, guid: 1cdaa2ade1af5fe4e972f57169ecfaf6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07442489
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 621610255705452093, guid: 1cdaa2ade1af5fe4e972f57169ecfaf6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.8087513
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 621610255705452093, guid: 1cdaa2ade1af5fe4e972f57169ecfaf6,
         type: 3}

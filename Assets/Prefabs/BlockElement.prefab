@@ -95,12 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0f820b5767f104cb09ab6b6a0db5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Block: {fileID: 11400000, guid: a72413fd709142443a5fa3d39141a3a6, type: 2}
+  Block: {fileID: 11400000, guid: 4c30dd728bef1fe4397f610e808821ab, type: 2}
   SelectedBlocks: {fileID: 11400000, guid: 45d93bc376ea1d14ba3d175e9bcbf544, type: 2}
   MatchedBlocks: {fileID: 11400000, guid: f31d7b8b078d7764b831b7546eb28cfa, type: 2}
-  Column: 0
+  Column: 1
   Row: 0
   OnBlockDestroyed: {fileID: 11400000, guid: 9936510aa953376449035190da685d83, type: 2}
+  Renderer: {fileID: 5200364010266065252}
 --- !u!61 &-4016721703403390069
 BoxCollider2D:
   m_ObjectHideFlags: 0
